@@ -1,11 +1,22 @@
 "use client";
+import Current from "./components/Current";
 import Input from "./components/Input";
 import React, {useState} from 'react';
+import WeekForecast from "./components/WeekForecast";
+import WeatherDetails from "./components/WeatherDetails";
 require('dotenv').config({ path: '.env.local' });
 
-interface WeatherData {
+export interface WeatherData {
+  location: {
+    name: string,
+    region: string
+  }
   current:{
-    temp_c: number;
+    temp_f: number;
+    condition: {
+      icon: string,
+      text: string
+  }
   }
 }
 
@@ -35,7 +46,36 @@ const Home:React.FC = () => {
         setData(null);
       }
     }
+  };
+
+  let content;
+  if (!data && error === "") {
+    content = (
+      <div>
+        <h2>Welcome to the Weather App</h2>
+      </div>
+    );
+  } else if (error !== "") {
+    content = (
+      <div>
+        <p>City not found</p>
+        <p>Enter a valid city</p>
+      </div>
+    );
+  } else {
+    content = (
+      <>
+        <div>
+          <Current data={data}/>
+          <WeekForecast />
+        </div>
+        <div>
+          <WeatherDetails />
+        </div>
+      </>
+    );
   }
+  
 
   return (
     <div className="bg-cover bg-gradient-to-t from-blue-400 to-grey-200 h-screen">
@@ -48,9 +88,7 @@ const Home:React.FC = () => {
           />
           <h1 className="text-black font-bold mb-8 md:mb-0 order-1 py-2 px-4 rounded-xl text-3xl font-sans">Weather App</h1>
         </div>
-        {data && data.current ? 
-          <div>{data.current.temp_c}</div> 
-          : null}
+        {content}
       </div>
     </div>
   );

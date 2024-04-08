@@ -1,7 +1,7 @@
 const WeekForecast = () => {
     return(
         <div>
-
+            WeatherForecast
         </div>
     )
 };
