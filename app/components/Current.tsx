@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCurrentDate } from '../utils/CurrentDate';
-import { WeatherData } from '../page';
+import { WeatherData } from '../utils/WeatherData';
 import { CiLocationOn } from "react-icons/ci";
 
 interface CurrentProps {
