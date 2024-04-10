@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import Autosuggest, { ChangeEvent, SuggestionsFetchRequestedParams } from 'react-autosuggest';
@@ -28,7 +29,7 @@ const CitiesTable: React.FC<CitiesTableProps> = ({ onCitySelect }) => {
     setIsLoading(true);
     try {
       const response = await axios.get<{ records: { fields: City }[] }>(
-        `https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&format=json&disjunctive.cou_name_en&sort=name&start=${startRef.current}`
+        `https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&format=json&disjunctive.cou_name_en&sort=name&refine.cou_name_en=India&start=${startRef.current}`
       );
       const newCities = response.data.records.map((record) => ({
         name: record.fields.name,
@@ -69,7 +70,7 @@ const CitiesTable: React.FC<CitiesTableProps> = ({ onCitySelect }) => {
     async (inputValue: string) => {
       try {
         const response = await axios.get<{ records: { fields: City }[] }>(
-          `https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&q=${inputValue}&format=json&disjunctive.cou_name_en&sort=name`
+          `https://public.opendatasoft.com/api/records/1.0/search/?dataset=geonames-all-cities-with-a-population-1000&q=${inputValue}&format=json&disjunctive.cou_name_en&sort=name&refine.cou_name_en=India`
         );
         const suggestedCities = response.data.records.map((record) => ({
           name: record.fields.name,
