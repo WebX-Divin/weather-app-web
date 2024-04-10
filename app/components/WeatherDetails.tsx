@@ -3,8 +3,8 @@ import { GiWindSlap, GiCompass } from 'react-icons/gi';
 import { WiHumidity } from 'react-icons/wi';
 import { MdAir } from 'react-icons/md';
 import { FaEye } from 'react-icons/fa';
-
 import { WeatherData } from "../utils/WeatherData";
+import { CiTempHigh } from 'react-icons/ci';
 
 interface WeatheDetailsProps{
     data: WeatherData | null;
@@ -54,7 +54,7 @@ const WeatherDetails:React.FC<WeatheDetailsProps> = ({data}) => {
             </div>
             <div className="bg-white/50 flex p-4 items-center justify-center gap-6 rounded-xl">
                 <div className="text-2xl">
-                <h3>Sunrise</h3>
+                <h3>Sunset</h3>
                     <h3>{data?.forecast.forecastday[0].astro.sunset}</h3>
                 </div>
                 <div>
@@ -67,7 +67,7 @@ const WeatherDetails:React.FC<WeatheDetailsProps> = ({data}) => {
                     <h3>{data?.current.feelslike_f}°</h3>
                 </div>
                 <div>
-                <GiWindSlap fontSize={40}/>
+                <CiTempHigh fontSize={40}/>
                 </div>
             </div>
             <div className="bg-white/50 flex p-4 items-center justify-center gap-6 rounded-xl">

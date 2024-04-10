@@ -2,13 +2,17 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
 import Autosuggest, { ChangeEvent, SuggestionsFetchRequestedParams } from 'react-autosuggest';
 
-interface City {
+export interface City {
   name: string;
   cou_name_en: string;
   timezone: string;
 }
 
-const CitiesTable: React.FC = () => {
+interface CitiesTableProps {
+  onCitySelect: (city: City) => void;
+}
+
+const CitiesTable: React.FC<CitiesTableProps> = ({ onCitySelect }) => {
   const [cities, setCities] = useState<City[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState('');
@@ -112,7 +116,7 @@ const CitiesTable: React.FC = () => {
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={{
-            placeholder: 'Search for a city or country...',
+            placeholder: 'Search for a city...',
             value: value,
             onChange: onChange,
           }}
@@ -131,6 +135,7 @@ const CitiesTable: React.FC = () => {
                 <tr
                   key={index}
                   className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300"
+                  onClick={() => onCitySelect(city)}
                 >
                   <td className="py-4 px-6 text-gray-800">{city.name}</td>
                   <td className="py-4 px-6 text-gray-800">{city.cou_name_en}</td>

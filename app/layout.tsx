@@ -17,7 +17,7 @@ const logoIcon: Icon = {
 };
 
 export const metadata: Metadata = {
-  title: "Weather Forecast Website",
+  title: "Infinite Scroll Weather Forecast",
   description: "Created by Divin Dass",
   icons: [logoIcon], // Ensure logoIcon is used instead of logo directly
 };
