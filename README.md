@@ -13,10 +13,12 @@ https://infinite-scroll-weather-app-juxc23.vercel.app/
 
 ## Demo Video
 
-Desktop Demo Video
+#### Desktop Demo Video
+
 https://github.com/WebX-Divin/weather-app-web/assets/116546151/6030f390-3a6d-4e6b-a490-3cfda7cbbb2e
 
-Mobile Demo Video
+#### Mobile Demo Video
+
 https://github.com/WebX-Divin/weather-app-web/assets/116546151/8e760696-15ed-45fe-ad73-b77be70914f7
 
 ## Deployment
