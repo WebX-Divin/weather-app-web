@@ -53,11 +53,13 @@ const Home: React.FC = () => {
       <div className="bg-white/25 w-full flex flex-col h-full">
         {/* Input and Logo */}
         <div className="flex flex-col md:flex-row justify-between items-center p-12">
-          <h1 className="text-black font-bold mb-8 md:mb-0 order-1 py-2 px-4 rounded-xl text-3xl font-sans">
-            Weather App
+          <h1 className="text-black font-bold mb-6 md:mb-0 order-1 py-2 px-4 rounded-xl text-3xl font-sans">
+            Infinite Scroll Weather App 
           </h1>
+         
         </div>
-        {content}
+        
+       <div> {content}</div>
       </div>
     </div>
   );
